@@ -1,0 +1,27 @@
+@startuml
+title Selling Domain
+skinparam shadowing false
+
+class SaleConfiguration {
+  price
+  cover_type
+  paper_type
+}
+
+class Order
+class LineItem {
+  price
+  quantity
+}
+class Book
+LineItem --> Book
+
+class PurchasedConfiguration {
+  cover_type
+  paper_type
+}
+
+Order --> LineItem
+LineItem --> PurchasedConfiguration
+
+@enduml

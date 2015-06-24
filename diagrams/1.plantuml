@@ -1,0 +1,36 @@
+@startuml
+skinparam shadowing false
+
+class Book {
+  title
+}
+
+class CoverDesign
+class Pages
+
+Book --> CoverDesign
+Book --> Pages
+Book --> SaleConfiguration
+
+class SaleConfiguration {
+  price
+  paper_type
+  cover_type
+}
+
+class Order
+class LineItem {
+  price
+  quantity
+}
+
+
+class PurchasedConfiguration {
+  paper_type
+  cover_type
+}
+
+Order --> LineItem
+LineItem --> PurchasedConfiguration
+
+@enduml

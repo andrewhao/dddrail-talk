@@ -1,0 +1,68 @@
+@startuml
+skinparam shadowing false
+
+package "Ebooks" {
+  class Ebook {
+  }
+
+  class EbookLineItem {
+    price
+  }
+
+  class EbookSaleConfiguration {
+    price_tier
+  }
+}
+
+package "iBookstore" {
+  class iBookstoreOrder
+  class iBookstorePrice
+
+}
+iBookstoreOrder --> Order
+EbookSaleConfiguration --> iBookstorePrice
+
+Ebook --> Pages
+Ebook --> CoverDesign
+
+Order --> EbookLineItem
+
+class Book {
+  title
+}
+
+class CoverDesign
+class Pages
+
+Book --> CoverDesign
+Book --> Pages
+Book --> SaleConfiguration
+
+class SaleConfiguration {
+  price
+  paper_type
+  cover_type
+}
+
+class Order
+class LineItem {
+  price
+  quantity
+}
+
+
+class PurchasedConfiguration {
+  paper_type
+  cover_type
+}
+
+Order --> LineItem
+LineItem --> PurchasedConfiguration
+
+Order --> Printer
+Order --> Shipper
+
+class Printer
+class Shipper
+
+@enduml

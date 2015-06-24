@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+
+class Book {
+  title
+}
+
+class CoverDesign
+class Pages
+
+Book --> CoverDesign
+Book --> Pages
+
+@enduml

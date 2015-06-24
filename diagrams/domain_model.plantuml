@@ -1,0 +1,111 @@
+@startuml
+title Portal Domain Model
+skinparam shadowing false
+
+legend left
+<b>Color legend:</b>
+<i>Gold</i>: aggregate root
+<i>Green</i>: database view
+<i>Blue</i>: remote service
+endlegend
+
+frame "Clinical Meaning Context (N-of-One)" {
+  [SFTPServer] as N1SFTPServer #lightblue
+}
+
+frame "Laboratory Context (LIMS)" {
+  [Request] as LIMSRequest
+  [Attachment] as LIMSAttachment
+  [AttachmentFile] as LIMSAttachmentFile
+  [Physician/Practice Manager/Practice Parent] as LIMSUsers
+  [ReportInfo] as LIMSGHRI
+  [Patient] as LIMSPatient
+  [GenePanel] as LIMSGenePanel
+
+  frame "Bioinformatics Pipeline subdomain" {
+    [SNV] as LIMSSNV
+    [CNV] as LIMSCNV
+    [Fusion] as LIMSFusion
+    [Indel] as LIMSIndel
+  }
+
+  LIMSAttachment -> LIMSAttachmentFile
+  LIMSPatient -> LIMSGHRI
+  LIMSPatient -> LIMSRequest
+}
+
+frame "Viewer Context (Portal)" {
+  frame "Request Subdomain" {
+    [RequestSummary] as RequestSummary #lightgreen
+    [Request] as Request #gold
+  }
+
+  frame "Reminder Subdomain" {
+    [RetestReminder]
+  }
+
+  frame "NOfOne Subdomain" {
+    [ActionableBiomarker] as N1ActionableBiomarker
+    [ClinicalTrial] as N1ClinicalTrial
+    [ClinicalRelevance] as N1ClinicalRelevance
+    [PositiveResult] as N1PositiveResult
+    [Report] as N1Report #gold
+    [Reference] as N1Reference
+    [Therapy] as N1Therapy
+    [ImportService] as N1ImportService
+
+    N1ImportService -> N1SFTPServer
+    N1ImportService -> N1Report
+
+    N1Report -> N1ActionableBiomarker
+    N1Report -> N1PositiveResult
+    N1Report -> N1Reference
+    N1ActionableBiomarker -> N1ClinicalTrial
+    N1ActionableBiomarker -> N1Therapy
+    N1ActionableBiomarker -> N1ClinicalRelevance
+  }
+
+  frame "Report Subdomain" {
+    [Report] #gold
+    [AlterationFrequency] #lightgreen
+    [AlterationIdentifier]
+    [Revision]
+    [Alteration] #gold
+
+    AlterationFrequency -> LIMSGHRI
+    AlterationFrequency -> AlterationIdentifier
+    Report -> Revision
+    Report -> Alteration
+    Alteration -> AlterationFrequency
+    Alteration -> N1PositiveResult
+    Alteration -> LIMSGenePanel
+    Revision -> LIMSAttachment
+  }
+
+  frame "Patient Subdomain" {
+    [Patient] #gold
+    Patient -> LIMSPatient
+    Patient -> Report
+  }
+
+  frame "Identity Subdomain" {
+    [User] #gold
+    [PasswordResetService]
+    [AccessControlService]
+    User -> LIMSUsers
+  }
+
+  Report -> LIMSRequest
+  Request -> RequestSummary
+  Request -> Report
+  RequestSummary -> LIMSUsers
+  RequestSummary -> LIMSRequest
+  RequestSummary -> LIMSPatient
+  RequestSummary -> LIMSGHRI
+  LIMSGHRI -> N1Report
+  AlterationFrequency -> LIMSSNV
+  AlterationFrequency -> LIMSCNV
+  AlterationFrequency -> LIMSFusion
+  AlterationFrequency -> LIMSIndel
+}
+@enduml
