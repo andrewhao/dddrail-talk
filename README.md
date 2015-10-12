@@ -65,4 +65,65 @@ Applying DDD principles to your rails monolith.
   - simple Ruby domain events
   - as you extract services: use pub/sub patterns in code: integration with -MQ or Redis.
 
+### Scratch thoughts
+
+- DDD encourages Translator objects - may not need to be so heavyweight
+  in your Rails apps. The idea is there though - you use an Adapter to
+  fetch from remote domain, then use Translator to translate that domain
+  language to your own.
+- Pure DDD encourages you have Service objects in your own domain that
+  talk to remote Adapters that implement HTTP facades. Kind of heavy.
+  (Figure 3.10) These are referred to as "boundary objects"
+
+### Further Reading
+
+- "Implementing Domain-Driven Design" by Vaughan Vernon
+- https://developers.soundcloud.com/blog/building-products-at-soundcloud-part-1-dealing-with-the-monolith
+
+### Scratch
+
+book
+amazon book
+contrived example
+
+"i can't see what you're talking about"
+domain driven design
+
+**what did you actually do?**
+
+ubiquitous language
+extract core example
+
+actual techniques
+* how did we deal with migrations
+* risks: how to roll out
+
+how did we share models
+
+rails engines
+
+start breaking it up
+
+how to handle transactional data
+
+how to apply DDD to rails
+
+* aggregate root
+
+show us the real thing
+
+"how do i do that?!"
+
+"what were the migrations like"
+
+context map:
+  draw it out
+  draw directionality of relationships
+
+examples of book model to the end
+
+- core domain models
+- extracting value objects
+- aggregate root
+
 
