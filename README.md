@@ -65,4 +65,15 @@ Applying DDD principles to your rails monolith.
   - simple Ruby domain events
   - as you extract services: use pub/sub patterns in code: integration with -MQ or Redis.
 
+## Examples
+
+### Scenario 1:
+
+Book scenario domains:
+
+- Creation
+- Printing
+- Shipping
+- Ordering
+- Selling
 
