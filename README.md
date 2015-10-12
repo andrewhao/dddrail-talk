@@ -126,4 +126,15 @@ examples of book model to the end
 - extracting value objects
 - aggregate root
 
+## Examples
+
+### Scenario 1:
+
+Book scenario domains:
+
+- Creation
+- Printing
+- Shipping
+- Ordering
+- Selling
 
