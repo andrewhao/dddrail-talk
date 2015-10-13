@@ -19,5 +19,7 @@
 #   watch(%r{file/path}) { `command(s)` }
 #
 guard :shell do
-  watch(/(.*).plantuml/) {|m| `./generate_diagrams.sh` }
+  watch(/(.*).plantuml/) do |m|
+    `echo "Generating #{m}" && ./generate_diagrams.sh`
+  end
 end

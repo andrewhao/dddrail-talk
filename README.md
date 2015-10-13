@@ -138,3 +138,77 @@ Book scenario domains:
 - Ordering
 - Selling
 
+### Scenario 2:
+
+Airline booking system:
+
+- Flight
+- Seat
+- SeatOpening
+- User
+- Booking
+- Passenger
+
+Domains:
+
+- Booking
+- Purchasing
+- Routing
+
+### Delorean: It's like Uber for Time Travel!
+
+- Motivation: why break it apart
+- hard to book things
+- Growth
+
+## OMG Monolith!
+
+### What is a monolith?
+
+- You're may be on a monolith if:
+  - tables everywhere
+  - hard to deploy
+  - you find it hard to scale
+  - regression err-where
+  - your Rails app has been in production for over three years.
+- Wait! Monoliths aren't bad! Don't beat yourself up!
+
+### Moving on, let's join our heroes in their story.
+
+- Delorean is Uber for time travel.
+- Diagram: human, delorean, timeline (1985, 1955, 2015)
+
+### In the beginning, all was peachy.
+
+- UML (1-basic)
+  - Trip
+  - User
+  - Payment
+- Notes:
+  - A user can request a trip
+  - A driver can fulfill a trip
+  - The user pays the driver a fee
+
+### Next: Let's let users book rides for different vehicles!
+
+- UML (2-ride-tiers)
+  - Trip
+  - User
+  - Payment
+  - Vehicle
+- Notes:
+  - A user can select what type of car they want to have, which has
+    its own pricing strategy
+  - Add complexity in order calculation (Payment) engine. Maybe you
+    thought you could manage this extra cost calculation in your
+controller.
+
+### Next: Time travel carpooling!
+
+- Notes:
+  - Oh boy! We can charge people a lower rate if we can coalesce two
+    trip members into one trip.
+  - Hmm, we have to add custom rates for this trip pool
+  - And we have to model the pool
+  - And we have to now calculate the complexities of this trip
+    (PaymentCalculatorService)

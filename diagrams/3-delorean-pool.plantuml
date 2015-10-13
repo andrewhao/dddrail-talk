@@ -11,6 +11,17 @@ class Trip {
   origin
   destination
   is_in_progress
+  trip_service_tier_id
+  trip_pool_id
+}
+
+class TripPool {
+}
+
+class TripRouterService {
+}
+
+class BillingService {
 }
 
 class Payment {
@@ -20,8 +31,16 @@ class Payment {
   stripe_charge_id
 }
 
+class TripServiceTier {
+  vehicle_name
+  price
+  is_eligible_for_trip_pooling
+}
+
 User --> Trip
 Trip --> User
 Trip --> Payment
+Trip --> TripServiceTier
+TripPool --> Trip
 
 @enduml
