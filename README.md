@@ -212,3 +212,14 @@ controller.
   - And we have to model the pool
   - And we have to now calculate the complexities of this trip
     (PaymentCalculatorService)
+
+### Next: DeloreanEats - time travel food delivery
+
+How about we have the driver fetch you some food from your favorite restaurant from the past?
+
+- Notes:
+  - Uh oh, I've gotta calculate and adjust for inflation! How do i bill for something in the past, paid in the present?
+  - We chose "order", but shoot, that's kind of generic. Did we name
+    this wrong?
+  - Hmm, now Payment can refer to either a trip or an Eats order.
+    Either may be nil.

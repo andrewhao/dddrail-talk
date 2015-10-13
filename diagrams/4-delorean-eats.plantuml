@@ -1,0 +1,80 @@
+@startuml
+skinparam shadowing false
+
+class User {
+  password
+  email
+  is_driver
+}
+
+class Trip {
+  origin
+  destination
+  is_in_progress
+  trip_service_tier_id
+  trip_pool_id
+}
+
+class TripPool {
+}
+
+class TripRouterService {
+}
+
+class BillingService {
+}
+
+class Payment {
+  user_id
+  trip_id
+  order_id
+  amount
+  stripe_charge_id
+}
+
+class TripServiceTier {
+  vehicle_name
+  price
+  is_eligible_for_trip_pooling
+}
+
+class Order {
+  user_id
+}
+
+User --> Order
+
+class OrderStoreItem {
+  order_id
+  order_store_item_id
+}
+
+Order --> OrderStoreItem
+
+class Store {
+  beginning_existence_time
+  end_existence_time
+}
+
+class StoreItem {
+  store_id
+  name
+  cost
+  inventory_count
+}
+
+class InflationChange {
+  year
+  rate
+}
+
+OrderStoreItem --> StoreItem
+Store --> StoreItem
+
+User --> Trip
+Trip --> User
+Trip --> Payment
+Trip --> TripServiceTier
+TripPool --> Trip
+
+@enduml
