@@ -44,19 +44,22 @@ class Order {
 
 User --> Order
 
-class OrderStoreItem {
+class OrderMenuItem {
   order_id
-  order_store_item_id
+  menu_item_id
 }
 
-Order --> OrderStoreItem
 
-class Store {
-  beginning_existence_time
-  end_existence_time
+class Restaurant {
+  begin_date
+  end_date
 }
 
-class StoreItem {
+class Menu {
+  restaurant_id
+}
+
+class MenuItem {
   store_id
   name
   cost
@@ -64,12 +67,14 @@ class StoreItem {
 }
 
 class InflationChange {
-  year
-  rate
+  date
+  rate_change
 }
 
-OrderStoreItem --> StoreItem
-Store --> StoreItem
+OrderMenuItem --> Order
+OrderMenuItem --> MenuItem
+Restaurant --> Menu
+Menu --> MenuItem
 
 User --> Trip
 Trip --> User
