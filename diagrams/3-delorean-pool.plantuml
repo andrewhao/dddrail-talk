@@ -18,12 +18,6 @@ class Trip {
 class TripPool {
 }
 
-class TripRouterService {
-}
-
-class BillingService {
-}
-
 class Payment {
   user_id
   trip_id
