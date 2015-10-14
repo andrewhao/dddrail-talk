@@ -261,6 +261,48 @@ Vernon and followed it closely.
 
 ### Principle 1: Ubiquitous Language
 
+The team sits down and realizes they need a good understanding of the
+business at large. In fact, they're surprised to discover they've never
+really sat down and talked about things and their meanings.
+
 ### Bounded Contexts and Subdomains
 
-Two important concepts about 
+#### Core Domain: what a business does that makes it unique and valuable
+
+For example, Delorean's core domain is "trips"
+
+#### Subdomain: smaller, divided areas of the business with the same logical consistency.
+
+Within Delorean's core domain of "trips", you have subdomains of "trip
+planning", "ordering", "routing", "deliveries"
+
+#### An aside: linguistic drivers:
+
+The team realized that they had pretty weak vocabulary! In fact, one of
+the bugs they've chased for so long was a bug relating to the fact that
+an engineer misunderstood "order" for trip payments instead of "order".
+
+For example:
+
+- User
+  - is actually Passenger (in Trip subdomain)
+  - is actually Driver (in Trip subdomain)
+  - is actually PurchaseAgent (in Delivery subdomain)
+  - remains in Identity subdomain
+
+- Order
+  - As it turns out, the DeloreanEATS product owner only ever calls it the Order.
+  - the delivery context calls it a Booking.
+  - don't try to mash the two together. They should be separate.
+
+- Key:
+  - Talk to people in your domain. Look for the experts. They will
+    surface the right terms for you.
+
+#### Bounded context:
+
+The limited applicability of a certain term.
+This is actually also modeling the *solution space* - that is, your
+software system should only ever enscapulate the linguistic driver.
+
+
