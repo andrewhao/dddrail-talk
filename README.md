@@ -223,3 +223,44 @@ How about we have the driver fetch you some food from your favorite restaurant f
     this wrong?
   - Hmm, now Payment can refer to either a trip or an Eats order.
     Either may be nil.
+
+### Meanwhile, Delorean grew.
+
+  - What was once now one team is now three teams: trips, eats, and
+e-commerce. and mobile.
+
+### Some hiccups happened...
+
+  - TripRouterService is flooding the DB with queries and generating
+    high load on server nodes.
+  - Payments team introduces regression in Trip while refactoring some
+    ServiceTier prices.
+  - Eats team deploys new data migrations to MenuItems, but forget to
+    recalculate them with new InflationAdjustments
+  - Mobile API developers request a new mobile login flow, but which
+    team should implement it?
+  - Somebody tries to implement Order by making it polymorphic STI... uh
+    oh.
+
+### And the business kept wanting to do new things.
+
+  - Outsourced dev shop is rebuilding the marketing home page and needs
+    a pricing API.
+  - CEO asks: what if we also added "Airbnb for time travel - host travelers from
+    other decades"? Let's launch that in 6 months!
+
+### Hold up!
+
+  - Developers are frustrated
+  - Can't find new 
+
+### What did the team do?
+
+They pulled out a copy of "Implementing Domain-Driven Design" by Vaughan
+Vernon and followed it closely.
+
+### Principle 1: Ubiquitous Language
+
+### Bounded Contexts and Subdomains
+
+Two important concepts about 
