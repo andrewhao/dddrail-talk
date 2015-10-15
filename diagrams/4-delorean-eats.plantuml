@@ -15,6 +15,12 @@ class Trip {
   trip_pool_id
 }
 
+class Vehicle {
+  user_id
+  gigawatt_output_rating
+  trip_service_tier_id
+}
+
 class TripPool {
 }
 
@@ -33,8 +39,7 @@ class Payment {
 }
 
 class TripServiceTier {
-  vehicle_name
-  price
+  billed_rate
   is_eligible_for_trip_pooling
 }
 

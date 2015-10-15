@@ -155,13 +155,29 @@ Domains:
 - Purchasing
 - Routing
 
+
+### Hi, I'm Andrew
+
+I work at Carbon Five. I used to come from a company called Blurb, where
+I derived some semblance of truth from these stories.
+
+### Show of hands
+
+How many of you use Rails?
+
+How many of you are on a monolith?
+
+How many of you are familiar with DDD?
+
 ### Delorean: It's like Uber for Time Travel!
 
 - Motivation: why break it apart
 - hard to book things
 - Growth
 
-## OMG Monolith!
+### The scenario: OMG Monolith!
+
+Engineering team is sad. demoralized. hard to ship. people leaving.
 
 ### What is a monolith?
 
@@ -171,6 +187,7 @@ Domains:
   - you find it hard to scale
   - regression err-where
   - your Rails app has been in production for over three years.
+
 - Wait! Monoliths aren't bad! Don't beat yourself up!
 
 ### Moving on, let's join our heroes in their story.
@@ -305,4 +322,34 @@ The limited applicability of a certain term.
 This is actually also modeling the *solution space* - that is, your
 software system should only ever enscapulate the linguistic driver.
 
+### Ubiquitous language:
 
+The phrase "The driver makes a delivery" has different meanings in
+different contexts. A delivery could be a food order in the Delivery
+context, or it could be a human ride-along trip in the Rides context.
+
+### Step 1: Visualize it.
+
+* Find a diagram.
+* Railroady is a gem that prints UML diagram.
+* Draw it out in Visio. Or Powerpoint.
+* PlantUML
+Print out a list of classes and put it all on cards.
+
+Print this out. Don't just keep it virtual.
+
+You will have a conversation. Keep it open for change.
+
+### Step 2: Talk about it.
+
+Bring in people from each of your core business units, or schedule time
+with them on their calendars. Have them look at the domain models. Do
+they agree with the names, or core interactions?
+
+### Misc takeaways
+
+Your database is NOT your model.
+
+AR pitfall - not everything needs to be an AR object. Think VERY HARD about whether something needs to be persisted in the table.
+Maybe you can build models on the fly. Or from other data sources.
+app/models can contain non-AR objects!
