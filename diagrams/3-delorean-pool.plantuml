@@ -19,17 +19,17 @@ class Trip {
   trip_pool_id
 }
 
+class Vehicle {
+  user_id
+  gigawatt_output_rating
+  service_tier_id
+}
+
 class Payment {
   user_id
   trip_id
   amount
   stripe_charge_id
-}
-
-class Vehicle {
-  user_id
-  vehicle_type_id
-  gigawatt_output_rating
 }
 
 class ServiceTier {

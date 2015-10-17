@@ -5,14 +5,14 @@ class User {
   password
   email
   is_driver
-  trip_service_tier_id
+  service_tier_id
 }
 
 class Trip {
   origin
   destination
   is_in_progress
-  trip_service_tier_id
+  service_tier_id
   passenger_id
   driver_id
   vehicle_id
