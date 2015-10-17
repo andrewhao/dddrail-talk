@@ -5,6 +5,7 @@ class User {
   password
   email
   is_driver
+  trip_service_tier_id
 }
 
 class Trip {
@@ -12,6 +13,9 @@ class Trip {
   destination
   is_in_progress
   trip_service_tier_id
+  passenger_id
+  driver_id
+  vehicle_id
 }
 
 class Payment {
@@ -21,14 +25,28 @@ class Payment {
   stripe_charge_id
 }
 
-class TripServiceTier {
-  vehicle_name
-  price
+class Vehicle {
+  user_id
+  vehicle_type_id
 }
+
+class ServiceTier {
+  vehicle_type_id
+  rate
+}
+
+class VehicleType {
+}
+
 
 User --> Trip
 Trip --> User
 Trip --> Payment
-Trip --> TripServiceTier
+Trip --> ServiceTier
+Trip --> Vehicle
+ServiceTier --> VehicleType
+Vehicle --> VehicleType
+Vehicle --> User
+User --> ServiceTier
 
 @enduml

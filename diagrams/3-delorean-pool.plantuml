@@ -5,17 +5,18 @@ class User {
   password
   email
   is_driver
+  service_tier_id
 }
 
 class Trip {
   origin
   destination
   is_in_progress
-  trip_service_tier_id
+  service_tier_id
+  passenger_id
+  driver_id
+  vehicle_id
   trip_pool_id
-}
-
-class TripPool {
 }
 
 class Payment {
@@ -25,16 +26,35 @@ class Payment {
   stripe_charge_id
 }
 
-class TripServiceTier {
-  vehicle_name
-  price
+class Vehicle {
+  user_id
+  vehicle_type_id
+  gigawatt_output_rating
+}
+
+class ServiceTier {
+  vehicle_type_id
+  rate
   is_eligible_for_trip_pooling
+}
+
+class VehicleType {
+}
+
+class TripPool {
 }
 
 User --> Trip
 Trip --> User
 Trip --> Payment
-Trip --> TripServiceTier
+Trip --> ServiceTier
+Trip --> Vehicle
+ServiceTier --> VehicleType
+Vehicle --> VehicleType
+Vehicle --> User
+User --> ServiceTier
 TripPool --> Trip
+User --> Vehicle
+
 
 @enduml

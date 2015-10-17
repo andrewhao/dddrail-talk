@@ -201,24 +201,28 @@ Engineering team is sad. demoralized. hard to ship. people leaving.
   - Trip
   - User
   - Payment
+  - Vehicle
 - Notes:
   - A user can request a trip
   - A driver can fulfill a trip
   - The user pays the driver a fee
 
-### Next: Let's let users book rides for different vehicles!
+### Next: Let's let users book rides for different vehicle classes!
 
 - UML (2-ride-tiers)
   - Trip
   - User
   - Payment
   - Vehicle
+  - ServiceTier
 - Notes:
   - A user can select what type of car they want to have, which has
     its own pricing strategy
   - Add complexity in order calculation (Payment) engine. Maybe you
     thought you could manage this extra cost calculation in your
 controller.
+  - The business capability of charging somethign different for a
+    different class of service is enscapulated in `ServiceTier`
 
 ### Next: Time travel carpooling!
 

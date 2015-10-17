@@ -5,23 +5,24 @@ class User {
   password
   email
   is_driver
+  service_tier_id
 }
 
 class Trip {
   origin
   destination
   is_in_progress
-  trip_service_tier_id
+  service_tier_id
+  passenger_id
+  driver_id
+  vehicle_id
   trip_pool_id
 }
 
 class Vehicle {
   user_id
   gigawatt_output_rating
-  trip_service_tier_id
-}
-
-class TripPool {
+  service_tier_id
 }
 
 class Payment {
@@ -33,7 +34,7 @@ class Payment {
 }
 
 class TripServiceTier {
-  billed_rate
+  rate
   is_eligible_for_trip_pooling
 }
 
@@ -41,7 +42,9 @@ class Order {
   user_id
 }
 
-User --> Order
+class TripPool {
+}
+
 
 class OrderMenuItem {
   order_id
@@ -70,6 +73,7 @@ class InflationAdjustment {
   rate_change
 }
 
+User --> Order
 OrderMenuItem --> Order
 OrderMenuItem --> MenuItem
 Restaurant --> Menu
@@ -79,6 +83,9 @@ User --> Trip
 Trip --> User
 Trip --> Payment
 Trip --> TripServiceTier
+TripServiceTier --> VehicleType
+Vehicle --> VehicleType
+User --> Vehicle
 TripPool --> Trip
 
 @enduml
