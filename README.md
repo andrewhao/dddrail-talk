@@ -286,6 +286,15 @@ The team sits down and realizes they need a good understanding of the
 business at large. In fact, they're surprised to discover they've never
 really sat down and talked about things and their meanings.
 
+#### Terms used in the business:
+
+* A **Driver** __picks up__ a **Passenger**
+* A **Passenger** __requests__ a **pickup**.
+* An **Invoice** is __delivered__ to the **Passenger**'s account
+* A **User** __logs in__ to the mobile app and changes her password.
+* A **Customer** __orders__ an item from a **Restaurant** to be
+  __delivered__ by the **Delivery Agent**
+
 ### Bounded Contexts and Subdomains
 
 #### Core Domain: what a business does that makes it unique and valuable
@@ -294,8 +303,7 @@ For example, Delorean's core domain is "trips"
 
 #### Subdomain: smaller, divided areas of the business with the same logical consistency.
 
-Within Delorean's core domain of "trips", you have subdomains of "trip
-planning", "ordering", "routing", "deliveries"
+Within Delorean's core domain of "trips", you have subdomains of "ridesharing", "financial transactions", "routing", "food delivery"
 
 #### An aside: linguistic drivers:
 
@@ -308,12 +316,12 @@ For example:
 - User
   - is actually Passenger (in Trip subdomain)
   - is actually Driver (in Trip subdomain)
-  - is actually PurchaseAgent (in Delivery subdomain)
+  - is actually DeliveryAgent (in Delivery subdomain)
   - remains in Identity subdomain
 
 - Order
   - As it turns out, the DeloreanEATS product owner only ever calls it the Order.
-  - the delivery context calls it a Booking.
+  - the rideshare context calls it a Pickup
   - don't try to mash the two together. They should be separate.
 
 - Key:
@@ -335,7 +343,7 @@ context, or it could be a human ride-along trip in the Rides context.
 ### Step 1: Visualize it.
 
 * Find a diagram.
-* Railroady is a gem that prints UML diagram.
+* Rails-ERD is a gem that prints UML diagram.
 * Draw it out in Visio. Or Powerpoint.
 * PlantUML
 Print out a list of classes and put it all on cards.
