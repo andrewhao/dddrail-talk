@@ -1,4 +1,5 @@
 @startuml
+left to right direction
 skinparam shadowing false
 
 class User {
@@ -19,24 +20,29 @@ class Trip {
   trip_pool_id
 }
 
-class Vehicle {
-  user_id
-  gigawatt_output_rating
-  service_tier_id
-}
-
-class Payment {
+class Invoice {
   user_id
   trip_id
   amount
-  stripe_charge_id
+}
+
+class Payment {
+  invoice_id
   order_id
+  amount
+  stripe_charge_id
 }
 
 class ServiceTier {
   vehicle_type_id
   rate
   is_eligible_for_trip_pooling
+}
+
+class Vehicle {
+  user_id
+  gigawatt_output_rating
+  service_tier_id
 }
 
 class VehicleType {
@@ -55,19 +61,21 @@ class OrderMenuItem {
 }
 
 class Restaurant {
-  begin_date
+  start_date
   end_date
+  name
 }
 
 class Menu {
   restaurant_id
+  name
+  start_date
+  end_date
 }
 
 class MenuItem {
-  store_id
   name
   cost
-  inventory_count
 }
 
 class InflationAdjustment {
@@ -75,18 +83,18 @@ class InflationAdjustment {
   rate_change
 }
 
-User --> Trip
 Trip --> User
-Trip --> Payment
 Trip --> ServiceTier
 Trip --> Vehicle
+Vehicle --> User
+Invoice --> User
+Invoice --> Trip
+Payment --> Invoice
 ServiceTier --> VehicleType
 Vehicle --> VehicleType
-Vehicle --> User
 User --> ServiceTier
 TripPool --> Trip
-User --> Vehicle
-User --> Order
+Order --> User
 OrderMenuItem --> Order
 OrderMenuItem --> MenuItem
 Restaurant --> Menu

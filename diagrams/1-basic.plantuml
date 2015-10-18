@@ -1,4 +1,5 @@
 @startuml
+left to right direction
 skinparam shadowing false
 
 class User {
@@ -15,9 +16,14 @@ class Trip {
   driver_id
 }
 
-class Payment {
+class Invoice {
   user_id
   trip_id
+  amount
+}
+
+class Payment {
+  invoice_id
   amount
   stripe_charge_id
 }
@@ -26,9 +32,10 @@ class Vehicle {
   user_id
 }
 
-User --> Trip
 Trip --> User
-Trip --> Payment
 Vehicle --> User
+Invoice --> User
+Invoice --> Trip
+Payment --> Invoice
 
 @enduml

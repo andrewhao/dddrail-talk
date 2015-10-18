@@ -1,4 +1,5 @@
 @startuml
+left to right direction
 skinparam shadowing false
 
 class User {
@@ -19,15 +20,14 @@ class Trip {
   trip_pool_id
 }
 
-class Vehicle {
+class Invoice {
   user_id
-  gigawatt_output_rating
-  service_tier_id
+  trip_id
+  amount
 }
 
 class Payment {
-  user_id
-  trip_id
+  invoice_id
   amount
   stripe_charge_id
 }
@@ -38,23 +38,29 @@ class ServiceTier {
   is_eligible_for_trip_pooling
 }
 
+class Vehicle {
+  user_id
+  gigawatt_output_rating
+  service_tier_id
+}
+
 class VehicleType {
+  name
 }
 
 class TripPool {
 }
 
-User --> Trip
 Trip --> User
-Trip --> Payment
 Trip --> ServiceTier
 Trip --> Vehicle
+Vehicle --> User
+Invoice --> User
+Invoice --> Trip
+Payment --> Invoice
 ServiceTier --> VehicleType
 Vehicle --> VehicleType
-Vehicle --> User
 User --> ServiceTier
 TripPool --> Trip
-User --> Vehicle
-
 
 @enduml
