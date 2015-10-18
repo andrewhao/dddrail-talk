@@ -290,6 +290,7 @@ really sat down and talked about things and their meanings.
 
 * A **Driver** __picks up__ a **Passenger**
 * A **Passenger** __requests__ a **pickup**.
+* A **Vehicle** is __driven__ by an **Owner**
 * An **Invoice** is __delivered__ to the **Passenger**'s account
 * A **User** __logs in__ to the mobile app and changes her password.
 * A **Customer** __orders__ an item from a **Restaurant** to be
@@ -303,7 +304,7 @@ For example, Delorean's core domain is "trips"
 
 #### Subdomain: smaller, divided areas of the business with the same logical consistency.
 
-Within Delorean's core domain of "trips", you have subdomains of "ridesharing", "financial transactions", "routing", "food delivery"
+Within Delorean's core domain of "trips", you have subdomains of "ridesharing", "financial transactions", "identity and access management", "food delivery"
 
 #### An aside: linguistic drivers:
 
@@ -311,7 +312,7 @@ The team realized that they had pretty weak vocabulary! In fact, one of
 the bugs they've chased for so long was a bug relating to the fact that
 an engineer misunderstood "order" for trip payments instead of "order".
 
-For example:
+##### For example:
 
 - User
   - is actually Passenger (in Trip subdomain)
@@ -324,9 +325,15 @@ For example:
   - the rideshare context calls it a Pickup
   - don't try to mash the two together. They should be separate.
 
+- Vehicle
+  - Instead of a user, it has an owner. or should it be termed an
+    operator?
+  - Is a vehicle driven? Or is it operated?
+
 - Key:
   - Talk to people in your domain. Look for the experts. They will
-    surface the right terms for you.
+    surface the right terms for you. You will drive out good
+    conversations about the business, too.
 
 #### Bounded context:
 
