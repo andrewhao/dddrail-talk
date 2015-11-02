@@ -1,6 +1,8 @@
 DDD-rail your Monorail 
 ----------------------
 
+[Imgur](http://i.imgur.com/gXcnA0S.png)
+
 Applying DDD principles to your rails monolith.
 
 ### Hi, I'm Andrew
