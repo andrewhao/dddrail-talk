@@ -212,10 +212,54 @@ Bring in people from each of your core business units, or schedule time
 with them on their calendars. Have them look at the domain models. Do
 they agree with the names, or core interactions?
 
+Develop a __ubiquitous language__, codify it in your __glossary__.
+
+### Step 3: Make a Context Map
+
+Draw lines around your physical system boundaries.
+Draw upstream/downstream relationships between them.
+These will help you identify dependencies between software systems.
+
+Now we set a goal for ourselves: we want to make software boundaries around each of these language domains. Most likely, our actual software artifact is the Rails monolith, encompassing all the domains.
+
+## Refactoring steps
+
+### Step 1: Rename objects in your software to map to real domain names
+
+Change variable names as necessary. 
+
+### Step 2: Modulize and namespace your objects, files.
+
+Move items into their own namespaces. Suggest using an `app/domains/xyz` folder structure, but can be flexible.
+
+What to do with shared models, entities? Perhaps they can move into their own shared namespace; `app/domains/company_name`. That may be able to move into a gem later in the future.
+
+### Step 3: Use aggregate roots
+
+Identify your aggregates, and enforce that external callers may only use the root object.
+
+Your queries should only return these roots.
+
+### Step 4: Break database joins between domains
+
+Prevent `belongs_to` associations & friends. Instead, take a refactor step where you move that association into a Finder object. Use that Finder object as an anti-corruption layer, translating domain concepts from external domain to your domain.
+
+### Step 5: Rinse, repeat
+
+* This should (and can) be done iteratively!
+* Use a business driver to slowly introduce these changes.
+* Continual conversations with business domain experts.
+
+## Toward the future
+
+* You can eventually move to microservices, but before that,
+* modules -> Rails engines?
+* See Component-Based Rails Applications, by Stephan Hagemann of Pivotal Labs.
+* Event sourcing, message queues, CQRS, advanced topics for decoupling!
+
 ### Misc takeaways
 
-Your database is NOT your model.
-
-AR pitfall - not everything needs to be an AR object. Think VERY HARD about whether something needs to be persisted in the table.
-Maybe you can build models on the fly. Or from other data sources.
-app/models can contain non-AR objects!
+* Your database is NOT your model.
+* AR pitfall - not everything needs to be an AR object. Think VERY HARD about whether something needs to be persisted in the table.
+* Maybe you can build models on the fly. Or from other data sources.
+* app/models can contain non-AR objects!
