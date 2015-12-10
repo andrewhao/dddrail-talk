@@ -265,3 +265,8 @@ Prevent `belongs_to` associations & friends. Instead, take a refactor step where
 * AR pitfall - not everything needs to be an AR object. Think VERY HARD about whether something needs to be persisted in the table.
 * Maybe you can build models on the fly. Or from other data sources.
 * app/models can contain non-AR objects!
+
+## Credits
+
+- Implementing Domain-Driven Design
+- https://speakerdeck.com/skwp/domain-driven-rails
